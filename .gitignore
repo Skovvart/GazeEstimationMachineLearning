@@ -30,3 +30,5 @@
 *.vrb
 *.xdy
 *.tdo
+Thumbs.db
+*.latexmain
