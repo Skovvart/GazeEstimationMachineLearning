@@ -1,0 +1,100 @@
+\subsection{Principal Component Analysis}
+Principal Component Analysis (PCA) is a statistical technique that can be used to identify patterns in high dimensional data, for example images.
+Examples in this section are inspired by the PCA tutorial by Smith \cite{smith2002tutorial}.
+
+\subsubsection{How To Use}
+\paragraph{Input data formatting.}
+First of all, the data should be prepared for PCA.
+In the case of images, the image should be flattened to a single vector.
+This means an image of size $M$ by $N$ with $Z$ dimensions (colour values) should turn into a vector with length $M\times N\times Z$.
+Turning the images into grayscale are often a good idea as they reduce the complexity by a third, and the added colour information may not be valuable.
+A mean vector of all the input vectors should then be calculated and subtracted from the input vectors, producing a new input set with a mean of 0.
+For 2 grayscale images of size $2\times 2$ pixels, the process could look like table \ref{tab:formattingexample}.
+All of the adjusted input vectors should then be placed in a matrix, where every row is an adjusted image vector.
+
+\begin{table}
+\caption{Input data formatting example}\label{tab:formattingexample}
+\begin{tabular}{l|rrrr}
+\hline
+\noalign{\smallskip}
+Vector & $(X_1, Y_1)$ & $(X_2, Y_1)$ & $(X_1, Y_2)$ & $(X_2, Y_2)$\\
+\noalign{\smallskip}
+\hline
+\noalign{\smallskip}
+$Image_1$ & 150 & 220 & 123 & 136 \\
+$Image_2$ & 20 & 110 & 240 & 11 \\
+Mean & 85 & 165 & 181.5 & 73.5 \\
+$AdjustedImg_1$ & 65  & 55 & -58.5 & 62.5 \\
+$AdjustedImg_2$ & -65 & -55 & 58.5 & -62.5 \\
+AdjustedMean & 0 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Calculate the covariance matrix.}
+The covariance between two dimensions can be defined as follows, assuming the mean has already been subtracted from $X$ and $Y$.
+$$cov(X, Y) = \frac{\sum_{i=1}^{n} X_iY_i}{n-1}$$
+The covariance should be calculated for all dimensions.
+For example, for a 3 dimensional data set with dimensions $(x,y,z)$ the covariance can be calculated for $(x,y)$, $(x,z)$ and $(y,z)$.
+The covariance matrix for a data set with n dimensions is defined as follows.
+$$C^{n\times n} = (c_{i,j}, c_{i,j} = cov(Dim_i, Dim_j))$$
+The covariance matrix for the previous imaginary data set with dimensions $(x,y,z)$ is the following.
+$$
+C= \begin{pmatrix}
+cov(x,x) & cov(x,y) & cov(x,z) \\
+cov(y,x) & cov(y,y) & cov(y,z) \\
+cov(z,x) & cov(z,y) & cov(z,z) \\
+\end{pmatrix}
+$$
+The matrix is a square $n\times n$ matrix, and is symmetrical around the main diagonal, as $cov(a,b) = cov(b,a)$.
+It is also worth noting that down the main diagonal the value is the covariance between a dimension and itself.
+
+\paragraph{Calculate eigenvectors and eigenvalues of the covariance matrix.}
+Eigenvectors are vectors that when multiplied with another matrix work like a constant. For example:
+$$
+\begin{pmatrix}
+2 & 3 \\
+2 & 1
+\end{pmatrix}
+\times
+\begin{pmatrix}
+3\\
+2
+\end{pmatrix}
+=
+\begin{pmatrix}
+12 \\
+8
+\end{pmatrix}
+=
+4 \times
+\begin{pmatrix}
+3 \\
+2
+\end{pmatrix}
+$$
+Some properties of eigenvectors: eigenvectors of a matrix can only be found for square matrices, and not every square matrix has eigenvectors. 
+Given an $n\times n$ matrix that does have eigenvectors, there are $n$ of them.
+There is no easy way to calculate eigenvectors, but most programming languages have libraries with support for calculating them.
+%Skriv eventuelt mere om eigenvektorer og værdier..?
+
+Eigenvalues are closely related to eigenvector and there was one in the previous example, namely 4.
+Eigenvalues comes in pairs with eigenvectors.
+
+\paragraph{Choosing components.}
+The eigenvector with the highest eigenvalue is the principle component of the data set.
+Sorting the eigenvectors by eigenvalue allows us to see what components are most important, and allows us to ignore insignificant components with low eigenvalues if necessary.
+After eliminating insignificant principal components, we can then form the feature vector which is a matrix of the eigenvectors we want to keep.
+
+
+\paragraph{Deriving the new data set.}
+The final step of Principal Component analysis is to apply our feature vector to the adjusted input data where the mean has been subtracted.
+The input data is transposed to get the data items in the columns and the dimensions in the rows.
+$$FinalData = FeatureVector\times AdjustedInputData^\top $$ %\top for transpose
+This gives us the original data expressed in terms of the patterns identified.
+%Mangler at skrive om PCA i forhold til vores project.
+
+%\paragraph{Recovering old data}
+
+\subsubsection{Generative model}
+You can use PCA to generate images and stuff.
