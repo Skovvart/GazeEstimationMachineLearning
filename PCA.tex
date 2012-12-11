@@ -1,5 +1,5 @@
 \subsection{Principal Component Analysis}
-\label{sec:PCA}
+\label{sub:PCA}
 Principal Component Analysis (PCA) is a statistical technique that can be used to identify patterns in high dimensional data, for example images.
 Examples in this section are inspired by the PCA tutorial by Smith \cite{smith2002tutorial}.
 
@@ -14,7 +14,8 @@ For 2 grayscale images of size $2\times 2$ pixels, the process could look like t
 All of the adjusted input vectors should then be placed in a matrix, where every row is an adjusted image vector.
 
 \begin{table}
-\caption{Input data formatting example}\label{tab:formattingexample}
+\label{tab:formattingexample}
+\centering
 \begin{tabular}{l|rrrr}
 \hline
 \noalign{\smallskip}
@@ -30,6 +31,7 @@ $AdjustedImg_2$ & -65 & -55 & 58.5 & -62.5 \\
 AdjustedMean & 0 & 0 & 0 & 0 \\
 \hline
 \end{tabular}
+\caption{Input data formatting example}
 \end{table}
 
 \paragraph{Calculate the covariance matrix.}

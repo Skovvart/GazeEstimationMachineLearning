@@ -1,0 +1,60 @@
+\subsection{General Overview On Machine Learning}
+\label{sub:GeneralML}
+This section serves as a summary of general machine learning concepts
+which are recommended to better understand the rest of the report.
+The theory originates mainly from the machine learning course\cite{learningfromdata2012course} and the accompanying text book\cite{learningfromdata2012book}.
+
+\subsubsection{Types of Machine Learning}
+\label{ssub:Types of Machine Learning}
+As mentioned in the \nameref{sec:Introduction} (see Section~\ref{sec:Introduction}),
+machine learning is a way of picking a fitting set of data to train on and calculate a model, 
+such that similar data can be evaluated using the same model with high accuracy.
+Generally speaking there are three popular types of machine learning:
+supervised learning, reinforcement learning and unsupervised learning.
+The type of learning is often for a project is often chosen on different sets criteria such as the type of data available,
+and the knowledge about how the data is grouped.
+More often than not the choice will lie on one single solution, something which will become clear in the following paragraphs.
+
+\paragraph{Supervised Learning}
+\label{par:Supervised Learning}
+To use supervised learning, the sample dataset used for learning must not only contain some valid input, but also the corresponding ``correct'' output.
+The challenge therefore primarily lies on finding the right way of grouping or evaluating the input
+such that the corresponding desired output can be achieved, by calculation on the model.
+In many ways, this often makes Supervised Learning the most desired method, as there it is often easier to find a fitting solution which corresponds to what is observed on real-world data,
+than when the desired output is completely unknown. It is also why, supervised learning has the most different techniques such as different types of Linear Models and Support Vector Machines (see Section~\ref{ssub:Models for Classification}).
+
+\paragraph{Reinforcement Learning}
+\label{par:Reinforcement Learning}
+Reinforcement learning is in many ways similar to supervised learning in that it requires both input data and corresponding output to be used.
+The main difference is that while supervised learning requires the desired output to be correct, reinforcement only requires a grading of such output.
+This technique is therefore often used, when there is no holistic overview regarding the distribution of data but where machine learning is till required.
+\begin{exm}
+Imagine a hospital where data is gathered on persons with an epidemical illness with multiple stages, and the
+medical personnel would want to determine what factors could be causing such illness. As symptoms often can be misinterpreted on early stages,
+it is unknown if the outcome is entirely correct but a grading of how ill a patient is can be used to aid the algorithm.
+\end{exm}
+In many ways reinforcement learning, also has to handle the grading additionally to finding a fitting model. 
+This usually makes the models more complex, and as such harder to generalize properly\cite{sutton96generalizationin}\cite{boyan95generalizationin}.
+
+\paragraph{Unsupervised Learning}
+\label{par:Unsupervised Learning}
+The last popular type of learning is unsupervised learning, where only data input is given.
+In many ways unsupervised learning tries to find a natural grouping or clustering of data,
+such that input data that lies next to each other is grouped similarly.
+This can be useful to e.g. separate colours from images or to find patterns in given input for further post-processing.
+While it maybe hard to find real-world data that groups in obvious ways, and even harder making it fit some desired output;
+Unsupervised learning has one advantage, that generalization is free. This is because unsupervised relies solely on input-processing and does not change
+any output metrics and as such the models that can be used to not have to conform to an output specification.
+Examples of unsupervised learning methods are k-means clustering and nearest neighbours\cite{learningfromdata2012book}.
+
+
+\subsubsection{Models for Classification}
+\label{ssub:Models for Classification}
+\subsubsection{Multiclass Classification}
+\label{ssub:Multiclass Classification}
+\subsubsection{Generalization}
+\label{ssub:Generalization}
+\subsubsection{Error and Noise}
+\label{ssub:Error and Noise}
+\subsubsection{Validation and Testing}
+\label{ssub:Validation and Testing}
