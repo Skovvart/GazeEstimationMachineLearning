@@ -1,4 +1,42 @@
 \section{Introduction}
-We will perform an experiment where a subject is looking at a finite amount of points under different conditions. These conditions are combinations of moving the head or keeping it still and an infrared light being on or off. The images will then be processed to identify the edges of the eye and the center of the pupil. We can then extract eye images using the feature data.  We can then run machine learning algorithms on the data and analyze the results to determine if we are able to perform gaze estimation.
+\subsection{What is Machine Learning?}
+In today's connected world, data is becoming more and more interesting. 
+Whether it is social information for advertising, film-rankings for leisure or medical histories for health, 
+collecting and classifying data has become more of a norm than an exception.
+While most useful data contains patterns it is sometimes hard or infeasible to use statistical and/or formal methods 
+to find a useful classification. In those cases, one could resort to the use of Machine Learning.
 
-This report will explain concepts of machine learning utilized in this project, the experiment in more detail, how the results can be evaluated, possible threats to validity and the final results.
+Machine Learning is the idea of pattern recognition on sample datasets,
+such as to enable classification of specific data classes.
+More precisely it is about finding representative data fitting a particular probability distribution to learn or `train' on, 
+such that any given data point coming from that probability distribution can be processed with a relatively high accuracy.
+In many ways Machine Learning, therefore, relates to the concept of \emph{generalization}, which specifies 
+the measure of accuracy between in-sample errors which are calculated during training, and out-of-sample errors which represents the general data.
+A Machine Learning model can be said to perform well, when the accuracy achieved during training can be generalized.
+
+\subsection{Investigating Machine Learning}
+To prepare for the experimental work done in this project, we have taken an on-line course
+on Machine Learning called "Learning from Data" by Dr. Yaser Abu-Mostafa\cite{learningfromdata2012course}.
+The course is what we have used the majority of the time on with relation to the project, and consists
+of 18 lectures covering introductory techniques and theory.
+These lectures are composed of general concepts such as the learning problem and overfitting, 
+techniques and models such as linear models and support vector machines, 
+and mathematical theory regarding testing and generalization.
+We will summarise the most important concepts in Section~\ref{sec:Theory} - \nameref{sec:Theory}.
+
+\subsection{Applying Machine Learning to Real-World Data}
+In order to gain practical experience of the application of Machine Learning to real-world problems, we will perform a practical experiment
+which will the form the basis of the dataset used.
+The core of the experiment relates to that if given a fixed arrangement of lights 
+it is possible to detect which light the person is looking at, solely by using a still image of the eye.
+
+\subsubsection{Processing Data}
+\label{sub:Processing Data}
+To get a workable set of data, we will use an appearance-based extraction method called Principal Component Analysis (see Section~\ref{sec:PCA} for details).
+The analysis will allow us to get a low-dimensional reduced space, that captures most of the actual variation and in that way
+be able to work with huge numbers of data without much loss of information.
+Finally we will attempt to run multiple types of machine learning algorithms,
+to examine if it is possible to find a suitable model that allows generalized gaze estimation.  \\
+
+In short, this report will explain the concepts of machine learning utilized in this project,
+the experiment in more detail, how the results can be evaluated, possible threats to validity and the final conclusions.
