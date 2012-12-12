@@ -7,15 +7,17 @@ Especially people with Amyotrophic Lateral Sclerosis (ALS) can make use of this 
 It is also closely related to eye tracking where image analysis is used to identify eyes and eye features such as eye corners, center of the iris, glints in the eye and so on.
 We will not be using eye tracking as it is outside the scope of this project.
 
-Using machine learning for gaze estimation can be problematic, as images of faces (or eyes) are high-dimensional data, making learning complex and expensive.
-There are a few approaches to reducing the complexity.
-One could reduce the input space by converting the image to grayscale, isolating the eye-pixels from the rest of the image, and scaling the resulting image.
-One could also reduce the input space by extracting features of the eye such as the positions of the corners of the eye and the center of the pupil. 
+Using machine learning for gaze estimation can be problematic, as images of faces (or eyes) are high-dimensional data, making learning complex and time-consuming.
+There are a few approaches to reducing this complexity.
+One could reduce the input space by converting the image to grayscale, isolating the eye-pixels from the rest of the image, and scaling the resulting image to a size where learning is feasible.
+One could also reduce the input space by extracting features of the eye such as the positions of the corners of the eye and the centre of the pupil.
 In this project we attempt both approaches.
 
 When gathering test data there are also many factors to consider.
-Test subjects should be placed similarly in such a way that their eyes are clearly visible to the camera and at a distance where the glints in the eyes from the infrared lights are visible.
-The angle of the head and eyes also impacts the resulting images.
+Test subjects should be placed similarly in such a way that their eyes are clearly visible to the camera and at a distance where glints in the eyes from infra-red lights are visible.
+The angle of the head and eyes can also impact learning immensely, as they make the eyes look very different compared to a front-facing eye.
+To combat this, one could attempt to rotate the eye, but this may cause other problems.
 Lighting is also very important and should be consistent during testing.
 
-When processing the initial test data, it can be beneficial to histogram equalize the images to increase the contrast. This makes lighting differences have less of an impact.
+When processing the initial test data, it can be beneficial to histogram equalize the images to increase the contrast.
+This makes potential lighting issues have less of an impact.

@@ -1,17 +1,22 @@
 \subsection{Principal Component Analysis}
 \label{sub:PCA}
 Principal Component Analysis (PCA) is a statistical technique that can be used to identify patterns in high dimensional data, for example images.
+It aims to identify principal components and their effect on the overall learning data, and the most important principal components can be separated from the less important ones.
+It is a linear model in the sense that it expects the data to be linearly separable, which can be a limitation in some cases.
+An advantage it has, is the fact that it is a very visual model.
+PCA can generate images based on a means-image from the learning data and a principal component.
+This allows one to generate images with various weights on a principal component and identify what it actually does.
 Examples in this section are inspired by the PCA tutorial by Smith \cite{smith2002tutorial}.
 
-\subsubsection{How To Use}
+\subsubsection{How It Works}
 \paragraph{Input data formatting.}
 First of all, the data should be prepared for PCA.
 In the case of images, the image should be flattened to a single vector.
-This means an image of size $M$ by $N$ with $Z$ dimensions (colour values) should turn into a vector with length $M\times N\times Z$.
-Turning the images into grayscale are often a good idea as they reduce the complexity by a third, and the added colour information may not be valuable.
+This means an image of size $M$ by $N$ with $Z$ dimensions (colour values) should turn into a vector of length $M\times N\times Z$.
+Turning the images into grayscale is often a good idea as it reduces the complexity by a third, and the added colour information may not be relevant.
 A mean vector of all the input vectors should then be calculated and subtracted from the input vectors, producing a new input set with a mean of 0.
 For 2 grayscale images of size $2\times 2$ pixels, the process could look like table \ref{tab:formattingexample}.
-All of the adjusted input vectors should then be placed in a matrix, where every row is an adjusted image vector.
+All of the adjusted input vectors should then be placed in a matrix where every row is an adjusted image vector.
 
 \begin{table}
 \centering
@@ -77,6 +82,7 @@ $$
 $$
 Some properties of eigenvectors: eigenvectors of a matrix can only be found for square matrices, and not every square matrix has eigenvectors. 
 Given an $n\times n$ matrix that does have eigenvectors, there are $n$ of them.
+The eigenvectors should be unit vectors, that being their length is exactly one.
 There is no easy way to calculate eigenvectors, but most programming languages have libraries with support for calculating them.
 %Skriv eventuelt mere om eigenvektorer og værdier..?
 
@@ -90,14 +96,10 @@ After eliminating insignificant principal components, we can then form the featu
 
 
 \paragraph{Deriving the new data set.}
-The final step of Principal Component analysis is to apply our feature vector to the adjusted input data where the mean has been subtracted.
+The final step of Principal Component Analysis is to apply our feature vector to the adjusted input data where the mean has been subtracted.
 The input data is transposed to get the data items in the columns and the dimensions in the rows.
 $$FinalData = FeatureVector\times AdjustedInputData^\top $$ %\top for transpose
 This gives us the original data expressed in terms of the patterns identified.
-%Mangler at skrive om PCA i forhold til vores project.
+%Mangler at skrive om PCA i forhold til vores project?
 
-%\paragraph{Recovering old data}
-
-\subsubsection{Generative model}
-PCA is also a generative model.
-With a means-image, you can multiple the principal components with various weights to see what effect the principal component has.
+%\paragraph{Recovering old data} virker ikke relevant
