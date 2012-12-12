@@ -1,10 +1,12 @@
-\documentclass{llncs}
+\documentclass[a4paper]{article}%{llncs}
 \usepackage{listings} % Nice code-boxes
 \usepackage{nameref}
 \usepackage{graphicx} % For \includegraphics
 \usepackage{float}    % For in-line images
 \usepackage{amsmath}
 \usepackage{url} %For urls
+\usepackage{caption} % For advanced captioning
+\usepackage{authblk}
 \graphicspath{{Images/}}
 \bibliographystyle{splncs}
 \lstset{basicstyle=\scriptsize\ttfamily,captionpos=b}
@@ -13,19 +15,18 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{3}
 \makeatletter
-\renewcommand*\l@author[2]{}
-\renewcommand*\l@title[2]{}
+%\renewcommand*\l@author[2]{}
+%\renewcommand*\l@title[2]{}
 \makeatletter
 % end TOC fix
 
 \newtheorem{exm}{Example} %Example theorem
+\begin{document}
 
-\title{Discrete Gaze-Estimation using Machine Learning}
-\author{Ahmad Salim Al-Sibahi \and Nicolai Skovvart\thanks{Supervisor: Dan Witzner Hansen}}
-\institute{IT University of Copenhagen, Denmark}
+\title{Discrete Gaze-Estimation using Machine Learning\thanks{Supervisor: Dan Witzner Hansen}}
+\author{Ahmad Salim Al-Sibahi (\texttt{asal@itu.dk})\\IT University of Copenhagen \and Nicolai Skovvart (\texttt{nbsk@itu.dk})\\IT University of Copenhagen}
 \date{\today}
 
-\begin{document}
 
 \maketitle
 
