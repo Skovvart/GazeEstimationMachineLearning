@@ -1,13 +1,36 @@
 \section{Discussion}
-\subsection{Internal}
+Write later. Main points that could be improved/be interesting:
+Test other machine learning algorithms and compare results.
+Test on more people.
+More points/points not on a straight line.
 
-Learning only tested on eyes from 2 people.
-Eye corners and pupil center was manually marked, not all marked 100\% accurately.
-Webcam images were not of very high quality. This makes the potential usability cheaper which is a plus, but some detail may be lost.
-Our test setup required the test-subjects to sit a certain distance from the camera for the infrared lights to be visible. This had the effect that the eye were a smaller part of the input images than they could have been.
-To simplify learning, images were scaled down to 20x20 pixels. Information lost that could potentially have an impact on learning. Trade-off.
-Noise due to loose experiment setup. Even during head-still images the heads moved slightly etc.
+\subsection{Threats To Validity}
+\subsubsection{Internal Threats}
+\paragraph{Human error during classification.}
+The corners of the eye and the centre of the pupil were manually marked and with less than 100\% accuracy.
+This introduces the possibility that some if not many of the images were wrongfully extracted, and may have impacted learning.
+It would be nice if it could be automated using eye tracking, but that also comes with some risk of misidentifying the features, and identifying errors could also be very time consuming.
 
-\subsection{External}
-Other ethnicities (in particular asians?) could potentially give different results. Given proper test-setup, it is unlikely to have any significant effect.
-"individuality of the eyes, variability in shape, scale, location, and lighting conditions"
+\paragraph{Web-cam quality.}
+The quality of the web-cam images were not very high.
+This makes the potential usability of our solution cheaper which is a plus, but it may impact learning results.
+Based on rescaling of the images, it does not seem like this is a significant factor.
+
+\paragraph{Test set-up.}
+Our test set-up required the test-subjects to sit a certain distance from the camera for the infra-red lights to be visible as glints in the eye.
+This had the effect that the eye were a smaller part of the input images than they could have been.
+
+The test set-up was also somewhat loose, and heads had some movement during head-still sequences.
+Some noise like this is to be expected, but it may have had an effect on learning.
+
+\paragraph{Resizing of learning data.}
+Images were scaled down to 20x20 pixels to simplify the learning process.
+This could potentially have an impact on learning.
+From our results, the rescaling only had a minor effects.
+
+\subsubsection{External Threats}
+\paragraph{Generalisability.}
+Eyes come in many shapes and forms and can vary greatly in shape, scale and location.
+We only tested on a few ethnicities and may have gotten very different results for others.
+
+Given proper test set-up, it is to be expected that you could use our approach to learn what points that ethnicity is looking at, but the same training data set may not be universal.
