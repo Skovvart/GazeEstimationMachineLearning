@@ -7,19 +7,22 @@
 \usepackage{url} %For urls
 \usepackage{caption} % For advanced captioning
 \usepackage{authblk}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \graphicspath{{Images/}}
 \bibliographystyle{splncs}
 \lstset{basicstyle=\scriptsize\ttfamily,captionpos=b}
 
 % make a proper TOC despite llncs, %http://code.google.com/p/decidr/wiki/LatexLLNCSTableOfContents
-\setcounter{tocdepth}{2}
-\setcounter{secnumdepth}{3}
-\makeatletter
-%\renewcommand*\l@author[2]{}
-%\renewcommand*\l@title[2]{}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
 \makeatletter
 % end TOC fix
-
+% Pseudocode fix
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\algrenewcommand\alglinenumber[1]{
+  {\sf\footnotesize#1}}
+% end Pseudocode fix
 \newtheorem{exm}{Example} %Example theorem
 \begin{document}
 

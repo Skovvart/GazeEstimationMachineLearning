@@ -75,18 +75,111 @@ This makes it easier to run algorithms and is usually not a problem, because it 
 To separate the two classes of output, a given linear learning algorithm must assign weight coefficients to each input parameter.
 To get a positive or negative classification out of the real-numbered output, the sign of the output is taken yielding two output classes.
 The equation to be calculated therefore looks as follows:
-$$ h(x) = sign(w_0 + w_1 \cdot x_1 + \dots + w_n \cdot x_n ) $$
-In order to allow separation of threshold-values that are non-zero an additional learning parameter $w_0$ is added.
+$$ h(x) = sign\left(w_0 + w_1 \cdot x_1 + \dots + w_n \cdot x_n \right) $$
+In order to allow separation of data with non-zero threshold value, an additional learning parameter $w_0$ is added.
+If an artificial parameter $x_0=1$ is added this can be rewritten as:
+$$ h(x) = sign\left(\sum_{i=0}^n{w_i \cdot x_i}\right) $$
+
+\begin{algorithm}
+  \begin{algorithmic}[1]
+    \Require $\mathbf{X}$ a matrix of size $n\times m$ containing training data
+    \Require $\mathbf{y}$ a vector of size $n$ which contains target output for each row vector $\mathbf{x} \in \mathbf{X}$
+    \Ensure $\mathbf{w}$ a vector of size $n+1$ containing all the weights for target linear model
+    \Function{CalculateWeights}{$\mathbf{X}, \mathbf{y}$}
+    \Let{$\mathbf{w}$}{$\mathbf{0}$}
+    \Repeat
+    \ForAll{rows $\mathbf{x_j} \in \mathbf{X}$} 
+    \Let{$y_j'$}{\Call{Sign}{$\sum_{i=0}^{n}{w_i\cdot x_{j,i}}$}}
+    \EndFor
+    \Let{$M$}{\Call{Misclassified}{$\mathbf{X}, \mathbf{y}, \mathbf{y'}$}}
+    \Let{$\left(\mathbf{x_{m}}, y_{m}\right)$}{\Call{Any}{M}}
+    \Comment{$\mathbf{x_{m}} \in \mathbf{X} \bigwedge y_{m} \in \mathbf{y}$} 
+    \Let{$\mathbf{w}$}{$\mathbf{w} + y_{m} \cdot \mathbf{x_{m}}$}
+    \Until{\Call{Misclassified}{$\mathbf{X}, \mathbf{y}, \mathbf{y'}$} = $\emptyset$}
+    \EndFunction
+  \end{algorithmic}
+  \caption{The Perceptron Learning Algorithm}\label{alg:perceptron}
+\end{algorithm}
+
+The simplest linear algorithm is called the Perceptron Learning Algorithm (see Algorithm~\ref{alg:perceptron}). 
+The idea is that the algorithm iteratively tries to adjust the weights by picking a misclassified point, and moving the separation line
+such that the point is correctly classified. 
+
+While this is normally done until the algorithm converges (i.e. until there are no misclassified points),
+this might be impossible if the data is not completely separable.
+In those situtations either a desired error rate $\epsilon$ is used or a hard limit on the number of iterations.
+
+Linear classifications algorithms are generally good because the numbers of learning parameters are few, and thus they generalize well.
 
 \paragraph{Logistic Regression}
 \label{par:LogisticRegression}
+While linear classification algorithms are simple and effective they have one disadvantage that they put a hard limit on output,
+i.e. an output point is either positive or negative.
+This makes it hard to identify borderline points, i.e. points which are close to the separation line, from those who are clearly in the separable region.
+
+If these points are of interest, one choice could be to use Logistic Regression.
+Logistic Regression is a learning model that enforces a softer limit on output than classical output by using the logistic function
+\footnote{The logistic function usually results in a value $y \in \left(0;1\right)$, though it is ordinarily not a problem as
+this can easily be translated to a scale corresponding to $\left(-1;1\right)$}
+$\theta(s) = \frac{e^s}{1+e^s}$ instead of the sign function.
+
+In this way the result would be a bounded real number which instead of specifying which class a point belongs to, specifies the probability of a point belonging to a specific class.
+As we will see in Section \ref{par:MulticlassClassification}, this can be useful to use in Multiclass Classification where multiple classification algorithms ``vote'' on a given point.
 \paragraph{Support Vector Machines}
 \label{par:SupportVectorMachines}
+
+Support Vector Machines are a set of advanced models that allows classification at low cost on generalization.
+Strictly speaking, they exploit the fact that while all data is important for the learning algorithm there 
+are only few points namely the neighbouring ones, also called the support vectors, which can influence the placement of the separation line (see Figure~\ref{fig:svm}).
+
+\begin{minipage}{\linewidth}
+\centering
+\makebox[\linewidth] {
+  \includegraphics[width=0.5\textwidth]{SupportVectorMachines.png}
+}
+\captionof{figure}{Support Vector Machines - Maximizing the margin to the neighbouring points}\label{fig:svm}
+\end{minipage}
+
+While all correct separation lines has same generalization bounds, intuitively a separation line with larger margin to its neighbouring points seems more attractable.
+This is due to the fact that a larger margin implies less possibility of misconfiguration of out-of-sample points; in other words it is easier for a data point to get
+misclassified because it ``jumped'' over the separation line when the line is close, then when there is a considerable margin to it.
+The goal of Support Vector Machine-based models is thus to maximize the distance between the separation line and its neighbouring points,
+something which can be achieved with great performance using quadratic programming\cite{learningfromdata2012course}\cite{frank2006algorithm}. 
+These properties make Support Vector Machines an excellent linear classifier, and this is 
+partly why we have chosen to use Support Vector Machines on our accumulated data in the experiment section.
+
+It should be noted that Support Vector Machines are also widely known for the ability
+to allow non-linear transformation capabilities at low generalization cost via kernel methods. As these capabilities are not further used in our project, we will not further
+discuss those but the interested reader can refer to the "Learning From Data Course"\cite{learningfromdata2012course} for more information.
+
 \paragraph{Multiclass Classification}
 \label{par:MulticlassClassification}
+In correlation with our experiment we have 4 lights which the test subjects are looking at, and as such we need to separate our data into 4 classes.
+This means that in many ways classical classification is not enough if we want to have the full capabilities and therefore we have to resort to the use
+of multiclass classification. While there are many approaches to multiclass classification,
+two popular ways of doing multiclass classification are One versus One, and One versus Rest\cite{aly2005survey}\cite{scikitlearn2012multiclass}.
+\begin{description}
+  \item[One versus One] The idea of One versus One classification is to create $k$ binary classifiers for each $k$ classes,
+    and then take a vote on each of the points such to see which classification the point fits best.
+    While this is a novel approach it can perform competitively if the binary classifiers are used with a good learning model such as Support Vector Machines.
+  \item[One versus Rest] In One versus Rest classification each pair of classes are compared on each point, and the class which compares favourably against the other classes
+    wins the vote. While this creates a more complex and slower interaction, it usually performs better regarding classification than One versus One classification.
+\end{description}
+
 \subsubsection{Generalization}
 \label{ssub:Generalization}
+\paragraph{The Importance of Generalization}
+\label{par:TheImportanceofGeneralization}
+\paragraph{Bias -- Variance Trade-off}
+\label{par:Bias-VarianceTrade-off}
+
 \subsubsection{Error and Noise}
 \label{ssub:ErrorandNoise}
 \subsubsection{Validation and Testing}
 \label{ssub:ValidationandTesting}
+\paragraph{Cross Validation}
+\label{par:CrossValidation}
+\paragraph{Testing Out-of-Sample Performance}
+\label{par:Testing Out-of-Sample Performance}
+
+
