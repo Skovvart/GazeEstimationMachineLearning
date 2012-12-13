@@ -1,5 +1,7 @@
 \section{Technical Solution}
+\label{sec:TechnicalSolution}
 \subsection{Set-up}
+\label{sub:Set-up}
 The web-cam we have used to gather our data with is a Genius iSlim 321R that can take both regular and infra-red images.
 Mounted to the web-cam is a plastic frame with 4 LED lights and 4 infra-red lights that are placed just besides the LED lights.
 The LED and infra-red lights are controlled by a Phidget single board computer. %reference?
@@ -24,6 +26,7 @@ Our project is written in python 2.7 using the following libraries:
 To control the mounted lights, we modified a phidgets script by Adam Stelmack. See LED-simple.py for details. %proper reference?
 
 \subsection{Experiment}
+\label{sub:Experiment}
 To perform the actual experiment, first of all data must be gathered.
 The initial scenarios we wanted to test were combinations of the head being fixated and looking at a point, the head moving while looking at a point, and the infra-red lights being turned on or off.
 This leaves us with the 4 scenarios with-light-head-move (WLHM), no-lights-head-move (NLHM), with-lights-head-still (WLHS) and no-lights-head-still (NLHS).
