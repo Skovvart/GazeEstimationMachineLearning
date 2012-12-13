@@ -204,13 +204,37 @@ It is therefore necessary to chose the learning model based not only based on th
 }
 \captionof{figure}{Bias -- Variance trade-off}\label{fig:biasvariance}
 \end{minipage}
-\subsubsection{Error and Noise}
-\label{ssub:ErrorandNoise}
-\subsubsection{Validation and Testing}
-\label{ssub:ValidationandTesting}
-\paragraph{Cross Validation}
-\label{par:CrossValidation}
-\paragraph{Testing Out-of-Sample Performance}
-\label{par:Testing Out-of-Sample Performance}
 
+\subsubsection{Validation}
+\label{ssub:Validation}
+In Machine Learning Validation is a concept in which a part of the input data is reserved for calculating an error measure of a calculated model.
+This can be useful in multiple scenarios such as  model selection and regularization.
+\begin{description}
+  \item[Model Selection] Validation allows calculating the accuracy of different learning models.
+    While validation cannot be used exclusively to compare models because of inherent contamination\footnote{Validation data may be used in the training, and as such has an optimistic bias\cite{learningfromdata2012book}},
+    it can be used as an aid for selecting good performing models and excluding models with bad accuracy.
+  \item[Regularization] Validation metrics can be used to avoid overfitting.
+    An overfitting model is a model which at cost of generalization performance, optimizes the model for the training data.
+    This can be monitored by checking the validation score, and if the score worsens further training can be stopped i.e. the model is regularized.
+\end{description}
+\paragraph{Cross-Validation}
+\label{par:Cross-Validation}
+A common way of calculating a validation score, is by using cross-validation analysis. Cross-validation works by a dataset of size $n$ into $k$ chunks of data, and then
+iterating through all $k$ chunks using them for validating a learning algorithm trained by the remaining $n-k$ chunks. 
+By averaging the accuracy of the $k$ results, a more reliable metric can be given than a single validation instance due to the fact that there is a smaller probability of
+partitioning the validation set in a ``lucky'' way.
 
+As a rule of thumb $k=10$ provides a good validation score, while still being performing on large datasets\cite{learningfromdata2012course}.
+
+\subsubsection{Testing}
+\label{ssub:Testing}
+Regardless of how performing a model is using the training data and how good a validation score it has,
+testing using real-world data is important to truly determine its actual performance.
+
+There are mainly two criterion for choosing a good test dataset: it must be a representative sample i.e. there must be enough data points to ensure that the testing is correct,
+and it should be unbiased i.e. the test set must not have been used to train the model given.
+Given these two conditions, it is possible to state that the test accuracy reflects the expected real-world accuracy.
+This can be formalized by Hoeffding's inequality
+$$\mathbb{P}\left[\left|\nu - \mu\right|> \epsilon\right]\leq 2\mathbf{e}^{-2\epsilon^2N}$$
+which specifies that the probability of a sample probability $\nu$ tracking the general probability for error $\mu$ with accuracy $\epsilon$ is very small for large
+number of data points $N$.
