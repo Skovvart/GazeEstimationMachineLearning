@@ -145,11 +145,10 @@ This is due to the fact that a larger margin implies less possibility of misconf
 misclassified because it ``jumped'' over the separation line when the line is close, then when there is a considerable margin to it.
 The goal of Support Vector Machine-based models is thus to maximize the distance between the separation line and its neighbouring points,
 something which can be achieved with great performance using quadratic programming\cite{learningfromdata2012course}\cite{frank2006algorithm}. 
-These properties make Support Vector Machines an excellent linear classifier, and this is 
-partly why we have chosen to use Support Vector Machines on our accumulated data in the experiment section.
+These properties make Support Vector Machines an excellent linear classifier, with generalization only dependent on the number of support vectors.
 
 It should be noted that Support Vector Machines are also widely known for the ability
-to allow non-linear transformation capabilities at low generalization cost via kernel methods. As these capabilities are not further used in our project, we will not further
+to allow non-linear transformation capabilities at low generalization cost via kernel methods. As these capabilities are not used in our project, we will not further
 discuss those but the interested reader can refer to the "Learning From Data Course"\cite{learningfromdata2012course} for more information.
 
 \paragraph{Multiclass Classification}
@@ -170,9 +169,41 @@ two popular ways of doing multiclass classification are One versus One, and One 
 \label{ssub:Generalization}
 \paragraph{The Importance of Generalization}
 \label{par:TheImportanceofGeneralization}
+As mentioned in Section~\ref{sec:Introduction}, generalization is the concept on if it is possible to make the same assumptions on accuracy on training data,
+as on the general data class. This concept is important because of the following observation, given a flexible enough model any data classification can be achieved
+with almost complete accuracy on training data. That is we can always find a classification which fits the data, but that classification is seldom correct.
+A learning model is only useful if it can be used in practice, and as we will see in Section~\ref{par:Bias-VarianceTrade-off} there is a correlation between model complexity
+and its effect on generalization.
 \paragraph{Bias -- Variance Trade-off}
 \label{par:Bias-VarianceTrade-off}
+One of the ways of measuring generalization capabilities of learning models are bias and variance. Bias-variance analysis depends on the mean learning function $\bar{g}$,
+which represents the average separation function for a given dataset.
+Bias is the measure of how well the mean learning function $\bar{g}$ approximates the target function $f$, i.e. the ability to generalize the learning model. Conversely,
+variance is the measure of the probability of reaching the mean learning function $\bar{g}$, given any learning function $g$.
+\begin{dfnt}
+  \textbf{Bias} is the squared difference between the target function $f$ and the mean learning function $\bar{g}$ i.e. $\left(\bar{g}(x)-f(x)\right)^2$
+\end{dfnt}
+\begin{dfnt}
+  \textbf{Variance} is the expected value of selecting a learning function $g$ close to the mean learning function $\bar{g}$ with a probability distribution on
+  a dataset $D$ i.e. $\mathbb{E}_\mathcal{D}\left[(g^{(\mathcal{D})}(x)-\bar{g}(x))^2\right]$
+\end{dfnt}
 
+The correlation between and bias-variance analysis depends often on the dataset,
+although it can generally be said that because simple models offer less flexibility they often do not track the target function well (i.e. they have a low variance),
+while complex models can classify a complex dataset data more correctly, it is harder to reach the correct configuration (i.e. they have a low bias).
+
+This results in a dilemma, choosing too simple of a model and it is possible to generalize the model well but with poor results, and choosing to
+complex a model will make it hard to have good generalization but performs well on the training data.
+This results in a trade-off where both the bias and variance must be kept sufficiently low to calculate a good learning model.
+It is therefore necessary to chose the learning model based not only based on the appearance of the target data, but also on the number of data points available (see Figure~\ref{fig:biasvariance}).
+
+\begin{minipage}{\linewidth}
+\centering
+\makebox[\linewidth] {
+  \includegraphics[width=0.5\textwidth]{BiasVariance.png}
+}
+\captionof{figure}{Bias -- Variance trade-off}\label{fig:biasvariance}
+\end{minipage}
 \subsubsection{Error and Noise}
 \label{ssub:ErrorandNoise}
 \subsubsection{Validation and Testing}
