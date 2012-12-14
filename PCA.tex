@@ -1,14 +1,54 @@
 \subsection{Principal Component Analysis}
 \label{sub:PCA}
-Principal Component Analysis (PCA) is a statistical technique that can be used to identify patterns in high dimensional data, for example images.
-It aims to identify principal components and their effect on the overall learning data, and the most important principal components can be separated from the less important ones.
-It is a linear model in the sense that it expects the data to be linearly separable, which can be a limitation in some cases.
-An advantage it has, is the fact that it is a very visual model.
-PCA can generate images based on a means-image from the learning data and a principal component.
+\subsubsection{Overview}
+\label{ssub:PCAOverview}
+Principal Component Analysis (PCA) is a statistical technique that can be used to identify variance in high dimensional data e.g. images.
+PCA is a linear model that works by identifying the direction where most variance, i.e. change in data,
+occurs and then orthogonally decomposes the variance in the other directions into vectors (See Figure~\ref{fig:pcaoverviewexample}).\\
+\begin{minipage}{\linewidth}
+\centering
+\makebox[\linewidth] {
+  \includegraphics[width=0.5\textwidth]{PCAOverviewExample.png}
+}
+\captionof{figure}{Principal Component Analysis of Data in Two Dimensions\cite{holland2008pca}}\label{fig:pcaoverviewexample}
+\end{minipage}
+In this way, PCA allows the possibility of omitting feature vectors that have low impact on variance,
+thus reducing the dimensionality of data while not loosing much of the information.
+
+Because of the way PCA decomposes variance in orthogonal directions, it can be used as a very visual model. 
+This is because the ``shape'' of the data is preserved when plotting the data using its different principal components, 
+as it only requires an affine transformation from the eigenspace, the space which two principal components eigen vectors i.e. feature vectors,
+to normal euclidean space.
+Furthermore, this property allows the identification of linear separable patterens which can be combined with other learning techniques to
+perform classification.
+
+Another use of PCA is that it can generate images based on a means-image from the learning data and a subset of principal components.
 This allows one to generate images with various weights on a principal component and identify what it actually does.
-Examples in this section are inspired by the PCA tutorial by Smith \cite{smith2002tutorial}.
+
+One clear disadvantage of PCA, is that it can be computationaly expensive to perform on large datasets.
+First of all it requires the computation of a covariance matrix (see Section~\ref{ssub:HowItWorks}), which algorithm has an asymptotic complexity of $\mathit{O}(n^2)$.
+Then it requires calculation of eigenvectors which use the QR algorithm, which adds an additional running time of $\mathit{O}(n^3)$\cite{abenz2012qralgorithm}.
+In the end, we also work on image data which is flattened and because images usually grow proportionally in width and height this makes the data grow quadtratically, i.e. $\mathit{O}(n^2)$
+and the complexity is increased considerably.
+
+\begin{minipage}{\linewidth}
+\centering
+\makebox[\linewidth] {
+  \includegraphics[width=0.5\textwidth]{pcaperformance.png}
+}
+\captionof{figure}{Experienced Running Time of Principal Component Analysis}\label{fig:pcarunningtime}
+\end{minipage}
+
+All these algorithms work by composition of the previous step, and thus this raises the asymptotic running time to an astounding $\mathit{O}(n^9)$.
+This is an effect which we had experienced in practice where we gradually increased image size from $20 \times 20$ to $60 \times 60$ and found that on large
+
+samples it takes almost 10 minutes to complete (See Figure~\ref{fig:pcarunningtime})\footnote{The performance test is done using an Intel Core i5-3210M dual-core processor. Because of CPU speed turbo scaling, the running times might not perform on equal conditions, and more computational intensive tasks might run faster than usual}.\\
+
+
+In the following section we will explain how PCA is applied in detail. The examples are inspired by the PCA tutorial by Smith \cite{smith2002tutorial}.
 
 \subsubsection{How It Works}
+\label{ssub:HowItWorks}
 \paragraph{Input data formatting.}
 First of all, the data should be prepared for PCA.
 In the case of images, the image should be flattened to a single vector.
@@ -96,10 +136,10 @@ After eliminating insignificant principal components, we can then form the featu
 
 
 \paragraph{Deriving the new data set.}
-The final step of Principal Component Analysis is to apply our feature vector to the adjusted input data where the mean has been subtracted.
+The final step of Principal Component Analysis is to apply our feature vector, $\Phi$, to the adjusted input data, $s_{input}$, where the means, $\mu_{input}$, has been subtracted.
 The input data is transposed to get the data items in the columns and the dimensions in the rows.
-$$FinalData = FeatureVector\times AdjustedInputData^\top $$ %\top for transpose
-This gives us the original data expressed in terms of the patterns identified.
+$$s_{final} = \Phi\cdot (s_{input}-\mu_{input})^\top+\mu_{input} $$ %\top for transpose
+If the means are readded, this gives us the original data expressed in terms of the patterns identified.
 %Mangler at skrive om PCA i forhold til vores project?
 
 %\paragraph{Recovering old data} virker ikke relevant
