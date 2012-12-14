@@ -5,13 +5,15 @@
 Principal Component Analysis (PCA) is a statistical technique that can be used to identify variance in high dimensional data e.g. images.
 PCA is a linear model that works by identifying the direction where most variance, i.e. change in data,
 occurs and then orthogonally decomposes the variance in the other directions into vectors (See Figure~\ref{fig:pcaoverviewexample}).\\
+
 \begin{minipage}{\linewidth}
 \centering
 \makebox[\linewidth] {
   \includegraphics[width=0.5\textwidth]{PCAOverviewExample.png}
 }
 \captionof{figure}{Principal Component Analysis of Data in Two Dimensions\cite{holland2008pca}}\label{fig:pcaoverviewexample}
-\end{minipage}
+\end{minipage}\\\\
+
 In this way, PCA allows the possibility of omitting feature vectors that have low impact on variance,
 thus reducing the dimensionality of data while not loosing much of the information.
 
@@ -27,7 +29,7 @@ This allows one to generate images with various weights on a principal component
 
 One clear disadvantage of PCA, is that it can be computationaly expensive to perform on large datasets.
 First of all it requires the computation of a covariance matrix (see Section~\ref{ssub:HowItWorks}), which algorithm has an asymptotic complexity of $\mathit{O}(n^2)$.
-Then it requires calculation of eigenvectors which use the QR algorithm, which adds an additional running time of $\mathit{O}(n^3)$\cite{abenz2012qralgorithm}.
+Then it requires calculation of eigenvectors which use the QR algorithm, which adds an additional running time of $\mathit{O}(n^3)$ \cite{abenz2012qralgorithm}.
 In the end, we also work on image data which is flattened and because images usually grow proportionally in width and height this makes the data grow quadtratically, i.e. $\mathit{O}(n^2)$
 and the complexity is increased considerably.
 
@@ -37,7 +39,7 @@ and the complexity is increased considerably.
   \includegraphics[width=0.5\textwidth]{pcaperformance.png}
 }
 \captionof{figure}{Experienced Running Time of Principal Component Analysis}\label{fig:pcarunningtime}
-\end{minipage}
+\end{minipage}\\\\
 
 All these algorithms work by composition of the previous step, and thus this raises the asymptotic running time to an astounding $\mathit{O}(n^9)$.
 This is an effect which we had experienced in practice where we gradually increased image size from $20 \times 20$ to $60 \times 60$ and found that on large

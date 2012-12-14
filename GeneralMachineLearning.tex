@@ -65,13 +65,15 @@ The idea is simple: given an input dataset $\mathbf{X}$ consisting of data-vecto
 find a linear formula which separates the outputs given the input parameters.
 The classes of output are usually denoted as either being negative (the output being $-1$) or positive (the output being $+1$). 
 This makes it easier to run algorithms and is usually not a problem, because it is often possible to do a mapping from any given output format.\\
+
 \begin{minipage}{\linewidth}
 \centering
 \makebox[\linewidth] {
   \includegraphics[width=0.5\textwidth]{LinearClassification.png}
 }
 \captionof{figure}{Linear classification algorithm running on two dimensional linear separable data}\label{fig:linearclass}
-\end{minipage}
+\end{minipage}\\\\
+
 To separate the two classes of output, a given linear learning algorithm must assign weight coefficients to each input parameter.
 To get a positive or negative classification out of the real-numbered output, the sign of the output is taken yielding two output classes.
 The equation to be calculated therefore looks as follows:
@@ -138,7 +140,7 @@ are only few points namely the neighbouring ones, also called the support vector
   \includegraphics[width=0.5\textwidth]{SupportVectorMachines.png}
 }
 \captionof{figure}{Support Vector Machines - Maximizing the margin to the neighbouring points}\label{fig:svm}
-\end{minipage}
+\end{minipage}\\\\
 
 While all correct separation lines has same generalization bounds, intuitively a separation line with larger margin to its neighbouring points seems more attractable.
 This is due to the fact that a larger margin implies less possibility of misconfiguration of out-of-sample points; in other words it is easier for a data point to get
