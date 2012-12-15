@@ -36,15 +36,200 @@ A possible explanation could be that our images have a lot of small variation on
 which might not useful for our purpose. This is a trade-off inherent of PCA, because it is a statistical and unsupervised method, and some of the data output
 might be considered noise.
 
-While we had examined the individual plots of all principal components to ensure a correct choice, we chose to only use the most important 5 in Section~\ref{ssub:ResultData}.
+While we had examined the individual plots of all principal components to ensure that we did not exclude anything of interest, we chose to only use the most important 5 in Section~\ref{ssub:ResultData}.
 This is due to the fact that while they do not represent almost all variation, they represented a comprehensible number of features while
-still having a large majority. Furthermore as we will see in the next section, the features which we can use for classification are
+still having a large majority. Furthermore as we will see in the next section, the features which we can use for classification, i.e. that are separable in the groups we have, are
 only represented in the most important principal components.
 
 \subsubsection{Result Data}
 \label{ssub:ResultData}
+
 \subsubsection{Generative Image Representation}
 \label{ssub:GenerativeImageRepresentation}
+
+  \begin{minipage}{\linewidth}
+  \centering
+  \makebox[\linewidth] {
+  \begin{tabular}{ccccccc}
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA0-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA1-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA2-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA3-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA3.jpg}
+  \end{tabular}
+  }
+  \captionof{figure}{No Light Head Move -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:nlhmpcaimages}
+  \end{minipage}\\\\
+
+
+  \begin{minipage}{\linewidth}
+  \centering
+  \makebox[\linewidth] {
+  \begin{tabular}{ccccccc}
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA0-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA1-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA2-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA3-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHS/PCA4-SIGMA3.jpg} \\
+
+  \end{tabular}
+  }
+  \captionof{figure}{No Light Head Still -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:nlhspcaimages}
+  \end{minipage}\\\\
+
+  \begin{minipage}{\linewidth}
+  \centering
+  \makebox[\linewidth] {
+  \begin{tabular}{ccccccc}
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA0-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA1-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA2-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA3-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHM/PCA4-SIGMA3.jpg} \\
+
+  \end{tabular}
+  }
+  \captionof{figure}{With Light Head Move -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:wlhmpcaimages}
+  \end{minipage}\\\\
+
+
+  \begin{minipage}{\linewidth}
+  \centering
+  \makebox[\linewidth] {
+  \begin{tabular}{ccccccc}
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA0-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA1-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA2-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA3-SIGMA3.jpg} \\
+      \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA-3.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA-2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA-1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA0.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA1.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA2.jpg}
+    & \includegraphics[width=0.1\textwidth]{GeneratedImages/WLHS/PCA4-SIGMA3.jpg} \\
+
+  \end{tabular}
+  }
+  \captionof{figure}{With Light Head Still -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:wlhspcaimages}
+  \end{minipage}\\\\
+
+
+
 \subsection{Creating Models for Classification}
 \label{sub:CreatingModelsforClassification}
 Summarize which machine learning models are used.

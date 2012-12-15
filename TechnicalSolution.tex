@@ -6,13 +6,7 @@ The web-cam we have used to gather our data with is a Genius iSlim 321R that can
 Mounted to the web-cam is a plastic frame with 4 LED lights and 4 infra-red lights that are placed just besides the LED lights.
 The LED and infra-red lights are controlled by a Phidget single board computer \cite{phidgets2012website}.
 The LED lights have colours and are placed in the following pattern: Yellow-Red-Camera-Green-Yellow.
-The web-cam set up can be seen on figure \ref{fig:webcam}.
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.8\textwidth]{cameratest}
-\caption{Genius iSlim 321R web-cam with mounted LED- and infra-red lights.}
-\label{fig:webcam}
-\end{figure}
+The web-cam set up can be seen on Figure~\ref{fig:webcamsetup}.
 
 Our project is written in python 2.7 using the following libraries: 
 \begin{itemize} %references?
@@ -59,16 +53,4 @@ To do this, eye images were extracted from the larger images using the previousl
 To extract the image, the images were loaded and converted to grayscale.
 They were then histogram-equalized to broaden the contrast in the image. %skriv noget om effekt på læring?
 The eye was then sliced out of the larger image and rescaled to a desired size, such as $20\times 20$, $40\times 40$ or $60\times 60$, and then saved.
-
-PCA was then run on the eye images and the results were plotted.
-See figure \ref{fig:PCAPlot} for an example of plotted PCA results.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.8\textwidth]{PCAPlot}
-\caption{Example PCA plot between the two most significant principal components.}
-\label{fig:PCAPlot}
-\end{figure}
-
-After plotting the results, we identified which principal components made the different lights separable and in which cases.
-We then tried generating images with different weights on the principal component that made the different points separable to see what effect it had on the image.
+This provided us a good starting point for analysing the eye images with PCA, and applying machine learning techniques on them.
