@@ -239,3 +239,27 @@ Conclude on usability by virtue of cross-validation metrics.
 \label{sub:GazeEstimationPerformanceonReal-WorldData}
 Run experiments on real-world data and talk about the actual performance metrics measured, compared to the validation metrics.
 Conclude on the generalization of the calculated model in practice.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|rrr}
+\hline
+\noalign{\smallskip}
+ & One versus one & One versus rest & Perceptron\\
+\noalign{\smallskip}
+\hline
+\noalign{\smallskip}
+Infra-red enabled & 43.86\% & 40.35\% & 81.58\% \\
+Infra-red disabled & 41.35\% & 41.35\% & 85.96\% \\
+Classification results & 90\% & 78\% & 98\% \\
+\hline
+\end{tabular}
+\caption{Test results showing percentage accuracy for the methods One versus One - Support Vector Machine (Linear Kernel), One versus Rest - Logistic Regression and Perceptron (Left/Right separability)}\label{tab:test results}
+\end{table}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{testresultspcaplot}
+\caption{PCA plot of test data on dataset WLHS.}
+\label{fig:testresultspcaplot}
+\end{figure}
