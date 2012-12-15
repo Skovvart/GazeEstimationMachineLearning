@@ -19,18 +19,19 @@ thus reducing the dimensionality of data while not loosing much of the informati
 
 Because of the way PCA decomposes variance in orthogonal directions, it can be used as a very visual model. 
 This is because the ``shape'' of the data is preserved when plotting the data using its different principal components, 
-as it only requires an affine transformation from the eigenspace, the space which two principal components eigen vectors i.e. feature vectors,
+as it only requires an affine transformation from the eigenspace, the space which two principal components eigenvectors i.e. feature vectors,
 to normal euclidean space.
-Furthermore, this property allows the identification of linear separable patterens which can be combined with other learning techniques to
+Furthermore, this property allows the identification of linear separable patterns which can be combined with other learning techniques to
 perform classification.
 
 Another use of PCA is that it can generate images based on a means-image from the learning data and a subset of principal components.
 This allows one to generate images with various weights on a principal component and identify what it actually does.
 
-One clear disadvantage of PCA, is that it can be computationaly expensive to perform on large datasets.
-First of all it requires the computation of a covariance matrix (see Section~\ref{ssub:HowItWorks}), which algorithm has an asymptotic complexity of $\mathit{O}(n^2)$.
+One clear disadvantage of PCA, is that it can be computationally expensive to perform on large or high-dimensional datasets.
+First of all it requires the computation of a covariance matrix (see Section~\ref{ssub:HowItWorks}), which produces an array of size $n^2$, where
+$n$ is the number of dimensions of data.
 Then it requires calculation of eigenvectors which use the QR algorithm, which adds an additional running time of $\mathit{O}(n^3)$ \cite{abenz2012qralgorithm}.
-In the end, we also work on image data which is flattened and because images usually grow proportionally in width and height this makes the data grow quadtratically, i.e. $\mathit{O}(n^2)$
+In the end, we also work on image data which is flattened and because images usually grow proportionally in width and height this makes the data grow quadratically, i.e. $\mathit{O}(n^2)$
 and the complexity is increased considerably.
 
 \begin{minipage}{\linewidth}
@@ -55,9 +56,9 @@ In the following section we will explain how PCA is applied in detail. The examp
 First of all, the data should be prepared for PCA.
 In the case of images, the image should be flattened to a single vector.
 This means an image of size $M$ by $N$ with $Z$ dimensions (colour values) should turn into a vector of length $M\times N\times Z$.
-Turning the images into grayscale is often a good idea as it reduces the complexity by a third, and the added colour information may not be relevant.
+Turning the images into grey scale is often a good idea as it reduces the complexity by a third, and the added colour information may not be relevant.
 A mean vector of all the input vectors should then be calculated and subtracted from the input vectors, producing a new input set with a mean of 0.
-For 2 grayscale images of size $2\times 2$ pixels, the process could look like table \ref{tab:formattingexample}.
+For 2 grey scale images of size $2\times 2$ pixels, the process could look like table \ref{tab:formattingexample}.
 All of the adjusted input vectors should then be placed in a matrix where every row is an adjusted image vector.
 
 \begin{table}[h!]
