@@ -1,37 +1,29 @@
-\section{Discussion}
-There are many interesting things that we could have done in our project.
-It could be very interesting to see how PCA would perform on points that were not in a straight line, or with more points in general.
-It could also be interesting to test on a larger amount of people.
-
-It could also be very interesting to try a supervised learning algorithm such as support vector machines and compare the results with PCA.
-
-\subsection{Threats To Validity}
-\subsubsection{Internal Threats}
+\section{Threats To Validity}
+\subsection{Internal Threats}
 \paragraph{Human error during classification.}
 The corners of the eye and the centre of the pupil were manually marked and with less than 100\% accuracy.
-This introduces the possibility that some if not many of the images were wrongfully extracted, and may have impacted learning.
-It would be nice if it could be automated using eye tracking, but that also comes with some risk of misidentifying the features, and identifying errors could also be very time consuming.
+This introduces the possibility that some of the images were wrongfully extracted and this may have impacted learning.
+It would be nice if it could be automated using image analysis to extract the features of the eyes, but that also comes with the risk of being done poorly, and identifying the bad results would most likely have to be done manually in any case.
 
 \paragraph{Web-cam quality.}
 The quality of the web-cam images were not very high.
 This makes the potential usability of our solution cheaper which is a plus, but it may impact learning results.
-Based on rescaling of the images, it does not seem like this is a significant factor.
+This does not seem to be a significant factor, as our tests showed that not much information was lost when the images were rescaled.
 
 \paragraph{Test set-up.}
 Our test set-up required the test-subjects to sit a certain distance from the camera for the infra-red lights to be visible as glints in the eye.
-This had the effect that the eye were a smaller part of the input images than they could have been.
+This had the effect that the eye was a smaller part of the input images than they could have been.
 
-The test set-up was also somewhat loose, and heads had some movement during head-still sequences.
-Some noise like this is to be expected, but it may have had an effect on learning.
+The test set-up was also somewhat loose, and heads moved a little during head-still sequences.
+Some noise like this is to be expected, but it may have had a small effect on learning.
 
 \paragraph{Resizing of learning data.}
-Images were scaled down to 20x20 pixels to simplify the learning process.
-This could potentially have an impact on learning.
+Images were scaled down to $20x20$ pixels to simplify the learning process and this could potentially have an impact on learning.
 From our results, the rescaling only had a minor effects.
 
-\subsubsection{External Threats}
+\subsection{External Threats}
 \paragraph{General applicability.}
 Eyes come in many shapes and forms and can vary greatly in shape, scale and location.
 We only tested on a few demographics and may have gotten different results for others.
 
-Given proper test set-up, it is to be expected that you could use our approach to learn what points that demographic is looking at, but the same training data set may not work for all.
+Given proper test set-up, it is to be expected that you could use our approach to learn what points that demographic is looking at, but the same training data set may not work equally well for all demographics.
