@@ -17,12 +17,28 @@ We will record videos of the test-subjects looking at the different points under
 For more information on the experiment set-up, see section \ref{sub:Experiment}.
 
 The eyes will then be separated from the rest of the image and will be normalized and scaled to a set size.
-We will then run Principal Component Analysis, an unsupervised learning algorithm, on the images and analyse in which principal components the different points are separable from each other.
-We will also analyse what effect the various conditions have on the outcome. %Kommer vi til det ordentligt?
-For more information on Principal Component Analysis, see section \ref{sub:PCA}.
 
-Finally, we will make an algorithm that can determine where a new image of an eye is looking.
+\section{Overview}
+The paper is organized as follows. We will start off by briefly discussing our proposed solution in regards to both Principal Component Analysis (PCA) and machine learning in the Proposed Solution-section.
+We will then go in detail with the theory behind concepts used in our project, such as general machine learning and PCA, in the Theory-section. 
+Our hardware set-up and experiment will then be discussed in more detail in the Technical Solution-section and we will evaluate the results of our experiment, as well as potential threats to validity, in the Evaluation- and Threats To Validity-sections respectively. 
+We will then finally conclude on the project in the Conclusion-section.
+
+\section{Proposed Solution}
+\subsection{Principal Component Analysis}
+We will run Principal Component Analysis, an unsupervised learning algorithm, on the images acquired during the data-gathering experiment and analyse on which principal components the different points are separable from each other.
+We will also analyse what effect the various conditions have on the outcome. %Kommer vi til det ordentligt?
+For more information on the theory Principal Component Analysis, see section \ref{sub:PCA}.
+
+\subsection{Machine Learning}
+We will analyse how various machine learning algorithms can determine where a eye-image is looking based on our PCA-data.
 We do this using various machine learning algorithms to classify how the different points are best partitioned.
+The machine learning algorithms we will try are:
+\begin{itemize}
+	\item{Support Vector Machines (SVM)}
+	\item{Logistic Regression}
+	\item{Perceptron Learning Algorithm (PLA)}
+\end{itemize}
 
 %Gaze estimation is the process of identifying where an eye is looking.
 %It has a lot of applications, for example in giving disabled people the ability to type with, and control devices using, their eyes.

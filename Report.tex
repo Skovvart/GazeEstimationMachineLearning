@@ -9,7 +9,7 @@
 \usepackage{caption} % For advanced captioning
 \usepackage{authblk}
 \usepackage{algorithm}
-\usepackage{subfig}
+%\usepackage{subfig}
 \usepackage[noend]{algpseudocode}
 \graphicspath{{Images/}}
 \bibliographystyle{splncs}
@@ -29,8 +29,8 @@
 \newtheorem{dfnt}{Definition} %Definition theorem
 \begin{document}
 
-\title{Discrete Gaze-Estimation using Machine Learning\thanks{Supervisor: Dan Witzner Hansen}}
-\author{Ahmad Salim Al-Sibahi (\texttt{asal@itu.dk})\\IT University of Copenhagen \and Nicolai Skovvart (\texttt{nbsk@itu.dk})\\IT University of Copenhagen}
+\title{Discrete Gaze-Estimation using Machine Learning}
+\author{Ahmad Salim Al-Sibahi (\texttt{asal@itu.dk}) \and Nicolai Skovvart (\texttt{nbsk@itu.dk})\\IT University of Copenhagen\\Supervisor: Dan Witzner Hansen}
 \date{\today}
 
 
@@ -39,26 +39,28 @@
 \include{Abstract}
 
 \tableofcontents
+\clearpage
+\input{Introduction}
 
-\include{Introduction}
+\input{ProblemDescription}
 
-\include{ProblemDescription}
+\input{Theory}
 
-\include{Theory}
+\input{TechnicalSolution}
 
-\include{TechnicalSolution}
+\input{Evaluation}
 
-\include{Evaluation}
+\input{Discussion}
 
-\include{Discussion}
+%\input{RelatedWork}
 
-%\include{RelatedWork}
+\input{Conclusion}
 
-\include{Conclusion}
-
+\let\Section\section  %add "References" to TOC
+\def\section*#1{\Section{#1}} 
 \bibliography{Report}
 
 \appendix
 
-%\include{TestSubjectImages}
+%\input{TestSubjectImages}
 \end{document}

@@ -237,8 +237,11 @@ Compare the performance of different machine learning models.
 Conclude on usability by virtue of cross-validation metrics.
 \subsection{Gaze Estimation Performance on Real-World Data}
 \label{sub:GazeEstimationPerformanceonReal-WorldData}
-Run experiments on real-world data and talk about the actual performance metrics measured, compared to the validation metrics.
-Conclude on the generalization of the calculated model in practice.
+%Run experiments on real-world data and talk about the actual performance metrics measured, compared to the validation metrics.
+%Conclude on the generalization of the calculated model in practice.
+We ran an experiment on the data gathered on 4 test-subjects for our most favourable scenario, that being head still. 
+The methods tested were One versus One - Support Vector Machine (Linear Kernel), One versus Rest - Logistic Regression and Perceptron that attempted left-right separation.
+Tests were run both with infra-red light being enabled and disabled and the results were saved (see Table~\ref{tab:test results}).
 
 \begin{table}[h!]
 \centering
@@ -250,12 +253,16 @@ Conclude on the generalization of the calculated model in practice.
 \hline
 \noalign{\smallskip}
 Infra-red enabled & 43.86\% & 40.35\% & 81.58\% \\
-Infra-red disabled & 41.35\% & 41.35\% & 85.96\% \\
-Classification results & 90\% & 78\% & 98\% \\
+Infra-red disabled & 41.35\% & 41.35\% & 84.96\% \\
+Classification results & 90\% & 78\% & 93.81\% \\
 \hline
 \end{tabular}
 \caption{Test results showing percentage accuracy for the methods One versus One - Support Vector Machine (Linear Kernel), One versus Rest - Logistic Regression and Perceptron (Left/Right separability)}\label{tab:test results}
 \end{table}
+
+This was a surprising result compared to the classification results that had shown that the data seemed to be very separable.
+To confirm our findings, we attempted to plot our findings to see if the data appeared to be separable but just in different regions than on our training data, but this didn't seem to be the case either.
+See Figure~\ref{fig:testresultspcaplot}.
 
 \begin{figure}[h!]
 \centering
@@ -263,3 +270,16 @@ Classification results & 90\% & 78\% & 98\% \\
 \caption{PCA plot of test data on dataset WLHS.}
 \label{fig:testresultspcaplot}
 \end{figure}
+
+Potential reasons for the results are
+\begin{itemize}
+	\item{Slightly different lighting conditions compared to learning data, but this should be a minor factor.}
+	\item{Too great variance in the eye-images. 
+		The training data consisted of images from two people while the testing data contained images from 4 people. 
+		If this were the case, the results could potentially be improved with more normalization of the eyes. 
+		Normalization could involve stretching the eyes to occupy the entire eye-image, rather than also containing some of the area surrounding the eye. 
+		The eyes could also be rotated and the colour values could be normalized.}
+\end{itemize}
+
+In the end, the results show that left-right separation is mostly feasible for both infra-red light being on and off, though worse than the classification would suggest.
+Multi-class separability, however, did not yield numbers that make it viable at this stage.
