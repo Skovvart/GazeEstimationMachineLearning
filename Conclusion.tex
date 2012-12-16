@@ -1,5 +1,9 @@
 \section{Conclusion}
-No lights head move - Not separable
-No lights head still - Left/right separable, PCA 1-2, 2-3, 2-4, 2-5
-With lights head move - Not separable
-With lights head still - Separable, PCA 1-2, 2-3, (2-4), ((2-5))
+In this project we have finished an on-line Caltech course on Machine Learning and learned python.
+We have successfully evaluated how Principal Component Analysis performs when doing classification-based gaze estimation.
+Training data led us to initially believe that the data was completely separable, with up to 90\% accurate identification of all 4 points, but this turned out to not be applicable on the testing data set.
+We discovered that we were only able to perform left-right separation on both infra-red and regular images with more than 80\% accuracy, while identification of all points could only be done with about 40\% accuracy in both cases.
+
+Future work should attempt to further improve the accuracy, possibly by normalizing the eye images further.
+These experiments could  be performed fairly easily if the required manual labour could be reduced, mainly when it comes to marking the eye-corners.
+Eye-identification algorithms could come in handy here, but accuracy is important.
