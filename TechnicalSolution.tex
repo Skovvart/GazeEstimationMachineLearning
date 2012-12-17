@@ -12,7 +12,7 @@ Our project is written in python 2.7 using the following libraries:
 \begin{itemize} %references?
 \item{Scitkit-learn for machine learning algorithms \cite{scikitlearn2012website}.}
 \item{OpenCV for image analysis and manipulation \cite{opencv2012website}.}
-\item{Numpy for matrix manipulation, also required by some of the other libraries\cite{scipy2012website}.}
+\item{Numpy for matrix manipulation, also required by some of the other libraries\cite{numpy2012website}.}
 \item{Matplotlib for plotting results \cite{matplotlib2012website}.}
 \item{Phidgets python API to control the LED- and infra-red lights.}
 \end{itemize}
@@ -22,9 +22,12 @@ To control the mounted lights, we modified an example phidgets python-script by 
 \subsection{Experiment}
 \label{sub:Experiment}
 To perform the actual experiment, first of all data must be gathered.
-The initial scenarios we wanted to test were combinations of the head being fixated and looking at a point, the head moving while looking at a point, and the infra-red lights being turned on or off.
+The initial scenarios we wanted to investigage were combinations of the head being fixated and looking at a point, the head moving while looking at a point, and the infra-red lights being turned on or off.
 This leaves us with the 4 scenarios with-light-head-move (WLHM), no-lights-head-move (NLHM), with-lights-head-still (WLHS) and no-lights-head-still (NLHS).
-Test-subjects were then asked to place their head at a set point and look at the different points. For images of our test-subjects, see figure \ref{fig:testsubjects}.%, \ref{fig:mikkertest2}, \ref{fig:spencertest}, \ref{fig:petertest} and \ref{fig:nielstest}.
+
+As some of these scenarios were filtered out during the evaluation of initial phases of training, our test subjects
+were only tested with their head still.
+Test-subjects were then asked to place their head at a set point and look at the different points. For images of our test-subjects, see Figure~\ref{fig:testsubjects}. %, \ref{fig:mikkertest2}, \ref{fig:spencertest}, \ref{fig:petertest} and \ref{fig:nielstest}.
 We then recorded video sequences of about 5 seconds in length at 30 frames per second of the various scenarios and saved the videos with appropriate names according to the scenarios.
 
 \begin{figure}[h!]
@@ -53,4 +56,4 @@ To do this, eye images were extracted from the larger images using the previousl
 To extract the image, the images were loaded and converted to grayscale.
 They were then histogram-equalized to broaden the contrast in the image. %skriv noget om effekt på læring?
 The eye was then sliced out of the larger image and rescaled to a desired size, such as $20\times 20$, $40\times 40$ or $60\times 60$, and then saved.
-This provided us a good starting point for analysing the eye images with PCA, and applying machine learning techniques on them.
+This provided us a good starting point for analysing the eye images with PCA, and applying machine learning techniques to them.

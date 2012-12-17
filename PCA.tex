@@ -58,28 +58,7 @@ In the case of images, the image should be flattened to a single vector.
 This means an image of size $M$ by $N$ with $Z$ dimensions (colour values) should turn into a vector of length $M\times N\times Z$.
 Turning the images into grey scale is often a good idea as it reduces the complexity by a third, and the added colour information may not be relevant.
 A mean vector of all the input vectors should then be calculated and subtracted from the input vectors, producing a new input set with a mean of 0.
-For 2 grey scale images of size $2\times 2$ pixels, the process could look like table \ref{tab:formattingexample}.
 All of the adjusted input vectors should then be placed in a matrix where every row is an adjusted image vector.
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|rrrr}
-\hline
-\noalign{\smallskip}
-Vector & $(X_1, Y_1)$ & $(X_2, Y_1)$ & $(X_1, Y_2)$ & $(X_2, Y_2)$\\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-$Image_1$ & 150 & 220 & 123 & 136 \\
-$Image_2$ & 20 & 110 & 240 & 11 \\
-Mean & 85 & 165 & 181.5 & 73.5 \\
-$AdjustedImg_1$ & 65  & 55 & -58.5 & 62.5 \\
-$AdjustedImg_2$ & -65 & -55 & 58.5 & -62.5 \\
-AdjustedMean & 0 & 0 & 0 & 0 \\
-\hline
-\end{tabular}
-\caption{Input data formatting example}\label{tab:formattingexample}
-\end{table}
 
 \paragraph{Calculate the covariance matrix.}
 The covariance between two dimensions can be defined as follows, assuming the mean has already been subtracted from $X$ and $Y$.

@@ -88,11 +88,11 @@ to look at the variation of the eye images.\\
     & \includegraphics[width=0.1\textwidth]{GeneratedImages/NLHM/PCA4-SIGMA3.jpg}
   \end{tabular}
   }
-  \captionof{figure}{No Light Head Move -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:nlhmpcaimages}
+  \captionof{figure}{No Light Head Move -- Generated PCA Images (Up --- Down: PC 1 --- PC 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:nlhmpcaimages}
   \end{minipage}\\\\
 
   In our NLHM dataset it seems that the most important principal component is the second one, as it represents the variation of the looking direction (See Figure~\ref{fig:nlhmpcaimages}).
-  Interestingly the principal component with most variation seem to relate to lighting conditions, even though our training data stems from the same room.
+  Interestingly, the principal component with most variation seem to relate to lighting conditions, even though our training data stems from the same room.
   The final principal components does not seem to be of interest as they seem to represent eye color, and different types of eyelid movements respectively.\\
 
   \begin{minipage}{\linewidth}
@@ -137,10 +137,10 @@ to look at the variation of the eye images.\\
 
   \end{tabular}
   }
-  \captionof{figure}{No Light Head Still -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:nlhspcaimages}
+  \captionof{figure}{No Light Head Still -- Generated PCA Images (Up --- Down: PC 1 --- PC 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:nlhspcaimages}
   \end{minipage}\\\\
 
-  Similarly to our NLHM dataset, our NLHS datasets first and second components seem to represent lighting and eye direction variation repsectively (See Figure~\ref{fig:nlhspcaimages}).
+  Similarly to our NLHM dataset, our NLHS datasets first and second components seem to represent lighting and eye direction variation respectively (See Figure~\ref{fig:nlhspcaimages}).
   It seems hard to see what the variation of the last three component, but a qualified guess would be that they represent differences in iris colour and eye open-close movements. None of the last three principal components,
   seem to provide us with better support for doing gaze estimation.\\
 
@@ -186,7 +186,7 @@ to look at the variation of the eye images.\\
 
   \end{tabular}
   }
-  \captionof{figure}{With Light Head Move -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:wlhmpcaimages}
+  \captionof{figure}{With Light Head Move -- Generated PCA Images (Up --- Down: PA 1 --- PA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:wlhmpcaimages}
   \end{minipage}\\\\
 
   The WLHM dataset seems to provide an interesting array of variation regarding the first couple of principal components (See Figure~\ref{fig:wlhmpcaimages}).
@@ -237,24 +237,24 @@ to look at the variation of the eye images.\\
 
   \end{tabular}
   }
-  \captionof{figure}{With Light Head Still -- Generated PCA Images (Up --- Down: PCA 1 --- PCA 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:wlhspcaimages}
+  \captionof{figure}{With Light Head Still -- Generated PCA Images (Up --- Down: PC 1 --- PC 5, Left --- Right: -3$\sigma$ --- 3$\sigma$)}\label{fig:wlhspcaimages}
   \end{minipage}\\\\
 
   The last set of eye images, WLHS, seem to have the most potential in usefulness regarding principal components. It can clearly be seen in Figure~\ref{fig:wlhspcaimages},
-  that the first of eye images represent glint reflections. Again the second component represents eye direction movement. An really interesting principal component
+  that the first of principal components represent glint reflections. The second component represents eye direction movement again. A really interesting principal component
   is the fourth which seems to represent up -- down movement of the eye direction, something which we had not captured in the previous datasets. This could
-  had provided an alternative to the principal components chosen to further analyse, but internal tests did not show any noticeable improvements.
-  Again, the last components seem to connect to general eyelid movements and still of no interest.
+  have provided an alternative to the principal components chosen to further analyse, but internal tests did not show any noticeable improvements.
+  Again, the last components seem to connect to general eyelid movements and still is of no interest.
 
   Generally the most interesting principal components was those regarding left -- right movements which are usually the second ones (except WLHM, where it was the third one).
   Furthermore, the first components seem to be interesting too as they seem to show variance in reflection/lighting which may influence the looking direction.
-  Lastly the fourth principal component in WLHS, seem to represent up -- down movement which possibly also could affect our learning data.
+  Lastly the fourth principal component in WLHS, seem to represent up -- down movement which possibly could also affect our learning data.
 
 \subsubsection{Result Data}
 \label{ssub:ResultData}
-In this section we have chosen to take a further look in how our training data is distributed in the chosen principal component dimension from Section~\ref{ssub:GenerativeImageRepresentation}.
+In this section we have chosen to take a further look at how our training data is distributed in the chosen principal component dimension from Section~\ref{ssub:GenerativeImageRepresentation}.
 Namely we will look at the principal components representing lighting and left -- right eye looking directions. Furthermore we will examine the up -- down
-eye movement in our WLHS dataset, as it seems to be available and possibly help our classification.\\
+eye movement in our WLHS dataset, as the movement seems to be available in that particular dataset, and this may possibly help our classification.\\
 
 \begin{minipage}{\linewidth}
   \centering
@@ -264,7 +264,7 @@ eye movement in our WLHS dataset, as it seems to be available and possibly help 
   \captionof{figure}{NLHM --- Variation in First and Second Principal Components}\label{fig:pca12plotnlhm}
 \end{minipage}\\\\
 
-In the first distribution of eye images in the NLHM dataset (see Figure~\ref{fig:pca12plotnlhm}), there seem to be some pattern of grouping between
+In the first distribution of eye images in the NLHM dataset (see Figure~\ref{fig:pca12plotnlhm}), there seems to be a pattern of grouping between
 points of each different light been looked at. While it might not be clearly separable for all dimensions, it seems that we can do some separation
 and we will therefore further examine this for use with machine learning techniques.\\
 
@@ -275,7 +275,7 @@ and we will therefore further examine this for use with machine learning techniq
   }
   \captionof{figure}{NLHS --- Variation in First and Second Principal Components}\label{fig:pca12plotnlhs}
 \end{minipage}\\\\
-In some ways the NLHS distribution of eye images (see Figure~\ref{fig:pca12plotnlhs}) is similar to the distribution in NLHM, albeit somwhat less chaotic.
+In some ways the NLHS distribution of eye images (see Figure~\ref{fig:pca12plotnlhs}) is similar to the distribution in NLHM, albeit somewhat less chaotic.
 It seems to group better in accordance with the actual left -- right eye movement. One particular point of interest is that there is a point in the ``yellow left light'' group
 which seems to stand out by being placed to the ``right light'' groups.
 This seems so odd, that we decided to examine which picture that belongs to that point (see Figure~\ref{fig:weirdclassifiedimage}).\\
@@ -325,11 +325,11 @@ seems to separate well in all principal components and as such we chose to calcu
 \subsection{Creating Models for Classification}
 \label{sub:CreatingModelsforClassification}
 
-After filtering out the obviously bad datasets, and choosing useful and separable components we have chose to run different machine learning algorithms 
+After filtering out the obviously bad datasets, and choosing useful and separable components we have chosen to run different machine learning algorithms 
 on the rest of our datasets. For each dataset we have run the three different algorithm types, two for multiclass classification into each different class,
-and the last for a simple left -- right separation. Too visualize how our data was classified and which points affected accuracy we have chosen
+and the last for a simple left -- right separation. To visualize how our data was classified and which points affected accuracy we have chosen
 to plot the different point and classification areas\footnote{We had troubles specifying colours in MatPlotLib regarding contours, as such the colours do not reflect the actual light colors (though these can be compared with the PCA images).
-  It should be noted that it is the classification classes is the important things to notice, and as such it influences direct visualization and not actual classification performance}.\\
+  It should be noted that it is the classification classes is the important things to notice, and as such it influences visualization and not actual classification performance}.\\
 
   \begin{minipage}{\linewidth}
   \centering
@@ -343,7 +343,7 @@ to plot the different point and classification areas\footnote{We had troubles sp
   \captionof{figure}{Different Machine Learning Classfications on NLHM dataset using First and Second Principal Components}\label{fig:nlhmclassification}
   \end{minipage}\\\\
 
-  As predicted patterns could be found in the NLHM, although the chaotic structure resulted in somewhat mediocre cross-validation metrics of around 70\%
+  As predicted patterns could be found in the NLHM dataset, although the chaotic structure resulted in somewhat mediocre cross-validation metrics of around 70\%
   accuracy on all method types (see Figure~\ref{fig:nlhmclassification}).
   An interesting note is that the Perceptron algorithm which separates left -- right only, does not seem to have converged in the optimal place.
   This can be because we ran to few iterations, or because the initialized weights did not prove good enough. To improve the results a possibility
@@ -422,7 +422,8 @@ Tests were run both with infra-red light being enabled and disabled and the resu
 \noalign{\smallskip}
 Infra-red enabled & 43.86\% & 40.35\% & 81.58\% \\
 Infra-red disabled & 41.35\% & 41.35\% & 84.96\% \\
-Classification results & 90\% & 78\% & 93.81\% \\
+\hline
+Training results & 90\% & 78\% & 93.81\% \\
 \hline
 \end{tabular}
 \caption{Test results showing percentage accuracy for the methods One versus One - Support Vector Machine (Linear Kernel), One versus Rest - Logistic Regression and Perceptron (Left/Right separability)}\label{tab:test results}

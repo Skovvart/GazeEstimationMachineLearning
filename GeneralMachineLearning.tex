@@ -19,22 +19,22 @@ More often than not the choice will lie on one single solution, something which 
 \label{par:SupervisedLearning}
 To use supervised learning, the sample dataset used for learning must not only contain some valid input, but also the corresponding ``correct'' output.
 The challenge therefore primarily lies on finding the right way of grouping or evaluating the input
-such that the corresponding desired output can be achieved, by calculation on the model.
-In many ways, this often makes Supervised Learning the most desired method, as there it is often easier to find a fitting solution which corresponds to what is observed on real-world data,
+such that the corresponding desired output can be achieved.
+In many ways, this often makes Supervised Learning the most desired method, as it is often easier to find a fitting solution which corresponds to what is observed on real world data,
 than when the desired output is completely unknown. It is also why, supervised learning has the most different techniques such as linear classification and support vector machines (see Section~\ref{ssub:ModelsforClassification}).
 
 \paragraph{Reinforcement Learning}
 \label{par:ReinforcementLearning}
 Reinforcement learning is in many ways similar to supervised learning in that it requires both input data and corresponding output to be used.
 The main difference is that while supervised learning requires the desired output to be correct, reinforcement only requires a grading of such output.
-This technique is therefore often used, when there is no holistic overview regarding the distribution of data but where machine learning is till required.
+This technique is therefore often used, when there is no holistic overview regarding the distribution of data but where machine learning is still required.
 \begin{exm}
 Imagine a hospital where data is gathered on persons with an epidemical illness, and the
 medical personnel would want to determine what factors could be causing such illness. As symptoms often can be misinterpreted on early stages,
 it is unknown if the outcome is entirely correct but a grading of how ill a patient is can be used to aid the algorithm.
 \end{exm}
 In many ways reinforcement learning, also has to handle the grading additionally to finding a fitting model. 
-This usually makes the models more complex, and as such harder to generalize properly\cite{sutton96generalizationin}\cite{boyan95generalizationin}.
+This usually makes the models more complex, and as such it is harder to generalize \cite{sutton96generalizationin}\cite{boyan95generalizationin}.
 
 \paragraph{Unsupervised Learning}
 \label{par:UnsupervisedLearning}
@@ -42,15 +42,15 @@ The last popular type of learning is unsupervised learning, where only data inpu
 In many ways unsupervised learning tries to find a natural grouping or clustering of data,
 such that input data that lies next to each other is grouped similarly.
 This can be useful to e.g. separate colours from images or to find patterns in given input for further post-processing.
-While it maybe hard to find real-world data that groups in obvious ways, and even harder making it fit some desired output;
-Unsupervised learning has one advantage, that generalization is free. This is because unsupervised relies solely on input-processing and does not change
-any output metrics and as such the models that can be used to not have to conform to an output specification.
-Examples of unsupervised learning methods are k-means clustering\cite{learningfromdata2012book}, nearest neighbours\cite{scikitlearn2012nearestneighbours} and PCA\cite{smith2002tutorial}(see Section~\ref{sub:PCA} - \nameref{sub:PCA} for further explanation).
+While it may be hard to find real-world data that groups in obvious ways, and even harder making it fit some desired output;
+unsupervised learning has one advantage, that generalization is free. This is because unsupervised relies solely on input-processing and does not change
+any output metrics and as such the models that can be used do not have to conform to an output specification.
+Examples of unsupervised learning methods are k-means clustering \cite{learningfromdata2012book}, nearest neighbours\cite{scikitlearn2012nearestneighbours} and PCA\cite{smith2002tutorial}(see Section~\ref{sub:PCA} - \nameref{sub:PCA} for further explanation).
 
 \paragraph{Selected Types of Learning}
 \label{par:SelectedTypesofLearning}
-To reduce the input space in our project, we resort to the use of PCA, which is as previously mentioned an unsupervised learning technique
-and thus have no generalization cost. This allows us both to visualize how the variation/data is grouped, and allows us to
+To reduce the input space in our project, we use PCA, which is as previously mentioned an unsupervised learning technique
+and thus has no generalization cost. This allows us to both visualize how the variation/data is grouped, and to
 use supervised learning techniques to do the actual separation of data with much less noise and more performance than otherwise.
 The choice of supervised learning is due to the fact that it offers the best trade-off between usefulness of output and generalization cost.
 
@@ -62,9 +62,9 @@ In the following sections we will thus present an overview of these models.
 \label{par:LinearClassification}
 The simplest type of classification is called linear classification.
 The idea is simple: given an input dataset $\mathbf{X}$ consisting of data-vectors $\mathbf{x}$ with input parameters $x_1, \dots, x_n \in \mathbf{x}$ and the corresponding output parameter $y \in \left\{-1;+1\right\}$ (see Figure~\ref{fig:linearclass}), 
-find a linear formula which separates the outputs given the input parameters.
+find a linear formula which separates the outputs given by the input parameters.
 The classes of output are usually denoted as either being negative (the output being $-1$) or positive (the output being $+1$). 
-This makes it easier to run algorithms and is usually not a problem, because it is often possible to do a mapping from any given output format.\\
+This makes it easier to run algorithms and it is usually not a problem, because it is often possible to do a mapping from any given output format.\\
 
 \begin{minipage}{\linewidth}
 \centering
@@ -120,8 +120,7 @@ i.e. an output point is either positive or negative.
 This makes it hard to identify borderline points, i.e. points which are close to the separation line, from those who are clearly in the separable region.
 
 If these points are of interest, one choice could be to use Logistic Regression.
-Logistic Regression is a learning model that enforces a softer limit on output than classical output by using the logistic function
-\footnote{The logistic function usually results in a value $y \in \left(0;1\right)$, though it is ordinarily not a problem as
+Logistic Regression is a learning model that enforces a softer limit on output than classical output by using the logistic function\footnote{The logistic function usually results in a value $y \in \left(0;1\right)$, though it is ordinarily not a problem as
 this can easily be translated to a scale corresponding to $\left(-1;1\right)$}
 $\theta(s) = \frac{e^s}{1+e^s}$ instead of the sign function.
 
@@ -132,7 +131,7 @@ As we will see in Section \ref{par:MulticlassClassification}, this can be useful
 
 Support Vector Machines are a set of advanced models that allows classification at low cost on generalization.
 Strictly speaking, they exploit the fact that while all data is important for the learning algorithm there 
-are only few points namely the neighbouring ones, also called the support vectors, which can influence the placement of the separation line (see Figure~\ref{fig:svm}).
+are only few points, namely the support vectors, which can influence the placement of the separation line (see Figure~\ref{fig:svm}).
 
 \begin{minipage}{\linewidth}
 \centering
@@ -142,7 +141,7 @@ are only few points namely the neighbouring ones, also called the support vector
 \captionof{figure}{Support Vector Machines - Maximizing the margin to the neighbouring points}\label{fig:svm}
 \end{minipage}\\\\
 
-While all correct separation lines has same generalization bounds, intuitively a separation line with larger margin to its neighbouring points seems more attractable.
+While all correct separation lines have the same generalization bounds, a separation line with larger margin to its neighbouring points seems more attractable intuitively.
 This is due to the fact that a larger margin implies less possibility of misconfiguration of out-of-sample points; in other words it is easier for a data point to get
 misclassified because it ``jumped'' over the separation line when the line is close, then when there is a considerable margin to it.
 The goal of Support Vector Machine-based models is thus to maximize the distance between the separation line and its neighbouring points,
@@ -171,15 +170,15 @@ two popular ways of doing multiclass classification are One versus One, and One 
 \label{ssub:Generalization}
 \paragraph{The Importance of Generalization}
 \label{par:TheImportanceofGeneralization}
-As mentioned in Section~\ref{sec:Introduction}, generalization is the concept on if it is possible to make the same assumptions on accuracy on training data,
-as on the general data class. This concept is important because of the following observation, given a flexible enough model any data classification can be achieved
-with almost complete accuracy on training data. That is we can always find a classification which fits the data, but that classification is seldom correct.
+As mentioned in Section~\ref{sec:Introduction}, generalization is the concept of whether it is possible to make the same assumptions on accuracy on training data,
+as on the general type of data. This concept is important because of the following observation: given a flexible enough model any data classification can be achieved
+with almost complete accuracy on training data. That is, we can always find a classification which fits the data, but that classification is seldom correct.
 A learning model is only useful if it can be used in practice, and as we will see in Section~\ref{par:Bias-VarianceTrade-off} there is a correlation between model complexity
 and its effect on generalization.
 \paragraph{Bias -- Variance Trade-off}
 \label{par:Bias-VarianceTrade-off}
 One of the ways of measuring generalization capabilities of learning models are bias and variance. Bias-variance analysis depends on the mean learning function $\bar{g}$,
-which represents the average separation function for a given dataset.
+which represents the average learning function for a given dataset.
 Bias is the measure of how well the mean learning function $\bar{g}$ approximates the target function $f$, i.e. the ability to generalize the learning model. Conversely,
 variance is the measure of the probability of reaching the mean learning function $\bar{g}$, given any learning function $g$.
 \begin{dfnt}
@@ -190,7 +189,7 @@ variance is the measure of the probability of reaching the mean learning functio
   a dataset $D$ i.e. $\mathbb{E}_\mathcal{D}\left[(g^{(\mathcal{D})}(x)-\bar{g}(x))^2\right]$
 \end{dfnt}
 
-The correlation between and bias-variance analysis depends often on the dataset,
+The correlation between bias and variance analysis depends often on the dataset,
 although it can generally be said that because simple models offer less flexibility they often do not track the target function well (i.e. they have a low variance),
 while complex models can classify a complex dataset data more correctly, it is harder to reach the correct configuration (i.e. they have a low bias).
 
@@ -221,21 +220,21 @@ This can be useful in multiple scenarios such as  model selection and regulariza
 \end{description}
 \paragraph{Cross-Validation}
 \label{par:Cross-Validation}
-A common way of calculating a validation score, is by using cross-validation analysis. Cross-validation works by a dataset of size $n$ into $k$ chunks of data, and then
-iterating through all $k$ chunks using them for validating a learning algorithm trained by the remaining $n-k$ chunks. 
+A common way of calculating a validation score, is by using cross-validation analysis. Cross-validation works by splitting a dataset of size $n$ into $k$ chunks of data, and then
+iterating through all $k$ chunks using them for validating a learning algorithm trained on the remaining chunks. 
 By averaging the accuracy of the $k$ results, a more reliable metric can be given than a single validation instance due to the fact that there is a smaller probability of
 partitioning the validation set in a ``lucky'' way.
 
-As a rule of thumb $k=10$ provides a good validation score, while still being performing on large datasets\cite{learningfromdata2012course}.
+As a rule of thumb $k=10$ provides a good validation score, while still performing well on large datasets\cite{learningfromdata2012course}.
 
 \subsubsection{Testing}
 \label{ssub:Testing}
 Regardless of how performing a model is using the training data and how good a validation score it has,
-testing using real-world data is important to truly determine its actual performance.
+testing using real world data is important to truly determine its actual performance.
 
-There are mainly two criterion for choosing a good test dataset: it must be a representative sample i.e. there must be enough data points to ensure that the testing is correct,
-and it should be unbiased i.e. the test set must not have been used to train the model given.
-Given these two conditions, it is possible to state that the test accuracy reflects the expected real-world accuracy.
+There are mainly two criteria for choosing a good test dataset: it must be a representative sample i.e. there must be enough data points to ensure that the testing is correct,
+and it should be unbiased i.e. the test set must not have been used to train on.
+Given these two conditions, it is possible to state that the test accurately reflects the expected real world accuracy.
 This can be formalized by Hoeffding's inequality
 $$\mathbb{P}\left[\left|\nu - \mu\right|> \epsilon\right]\leq 2\mathbf{e}^{-2\epsilon^2N}$$
 which specifies that the probability of a sample probability $\nu$ tracking the general probability for error $\mu$ with accuracy $\epsilon$ is very small for large
